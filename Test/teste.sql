@@ -9,3 +9,5 @@ INSERT INTO usuarios(nome, email, idade) values(
     "clone_carlos@et.com", 
     60
 );  
+
+DELETE FROM usuarios WHERE nome = "Victor Lima";

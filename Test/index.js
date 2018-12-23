@@ -27,14 +27,12 @@ app.get("/blog", function(req, res) {
     res.send("<title>Bem Vindo ao Nosso Blog</title><h1>Bem Vindo ao Nosso Blog</h1>");
 });
 
+app.get('/ola/:cargo/:nome/:cor', function(req, res){
+    var parametros = req.params;
+    res.send("<h1>Olá " + parametros.nome + ", seu cargo atual é: " + parametros.cargo +
+    " e sua cor preferida é: " + parametros.cor + ".</h1>");
+});
 
-
-
-
-
-
-
-
-app.listen(8081, function() {
+app.listen(80, function() {
     console.log("Servidor Rodando na url http://localhost:8081.");
 });

@@ -11,3 +11,5 @@ INSERT INTO usuarios(nome, email, idade) values(
 );  
 
 DELETE FROM usuarios WHERE nome = "Victor Lima";
+
+UPDATE usuarios SET nome = "Luiz Silva Silveira", email = "silveira@silva.com.br" WHERE nome = "Luiz Silva";

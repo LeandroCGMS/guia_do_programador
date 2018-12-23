@@ -16,11 +16,11 @@ codigoBasico = "<!DOCTYPE html>" +
 "</html>";
 
 app.get('/', function(req, res){
-    res.send(codigoBasico);
+    res.sendFile(__dirname + '/html/index.html');
 });
 
 app.get("/sobre", function(req, res){
-    res.send("<title>Sobre O Site</title><h1>Informações Sobre O Nosso Site</h1>");
+    res.sendFile(__dirname + '/html/sobre.html');
 });
 
 app.get("/blog", function(req, res) {
@@ -34,5 +34,5 @@ app.get('/ola/:cargo/:nome/:cor', function(req, res){
 });
 
 app.listen(80, function() {
-    console.log("Servidor Rodando na url http://localhost:8081.");
+    console.log("Servidor Rodando na url http://localhost.");
 });

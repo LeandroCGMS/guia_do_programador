@@ -1,36 +1,18 @@
 const express = require('express');
 const app = express();
-var titulo = "Bem Vindo ao Nosso Site";
-codigoBasico = "<!DOCTYPE html>" +
-"<html lang='pt-br'>" +
-"<head>" +
-    "<meta charset='UTF-8'>" + 
-    "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
-    "<title>" + titulo + "</title>" +
-    "<script type='text/javascript' src=''></script>" +
-    "<script type='text/javascript' src='js/cpf.js'></script>" +
-"</head>" +
-"<body>" +
-    "<h1>Seja Bem Vindo ao Meu App.</h1>" +
-"</body>" +
-"</html>";
+const handlebars = require('express-handlebars');
 
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/html/index.html');
-});
 
-app.get("/sobre", function(req, res){
-    res.sendFile(__dirname + '/html/sobre.html');
-});
+// Config
+    // Template Engine
+app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+app.set('view engine', 'handlebars')
 
-app.get("/blog", function(req, res) {
-    res.send("<title>Bem Vindo ao Nosso Blog</title><h1>Bem Vindo ao Nosso Blog</h1>");
-});
-
-app.get('/ola/:cargo/:nome/:cor', function(req, res){
-    var parametros = req.params;
-    res.send("<h1>Olá " + parametros.nome + ", seu cargo atual é: " + parametros.cargo +
-    " e sua cor preferida é: " + parametros.cor + ".</h1>");
+// Conexão com o banco de dados MySQL
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('test', 'usuario1', '12345678', {
+    host: "localhost",
+    dialect: 'mysql'
 });
 
 app.listen(80, function() {

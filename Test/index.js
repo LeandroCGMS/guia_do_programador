@@ -15,6 +15,11 @@ const sequelize = new Sequelize('test', 'usuario1', '12345678', {
     dialect: 'mysql'
 });
 
+// Rotas
+app.get('/cad', function(req, res){
+    res.render('formulario');
+})
+
 app.listen(80, function() {
     console.log("Servidor Rodando na url http://localhost.");
 });

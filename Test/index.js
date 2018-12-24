@@ -20,6 +20,11 @@ app.get('/cad', function(req, res){
     res.render('formulario');
 })
 
+app.post('/add', function(req, res){
+    res.send('FORMULÁRIO RECEBIDO.');
+})
+
+
 app.listen(80, function() {
     console.log("Servidor Rodando na url http://localhost.");
 });

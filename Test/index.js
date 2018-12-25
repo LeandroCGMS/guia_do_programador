@@ -9,12 +9,7 @@ app.set('view engine', 'handlebars')
 // Body Parser
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
-// Conexão com o banco de dados MySQL
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('test', 'usuario1', '12345678', {
-    host: "localhost",
-    dialect: 'mysql'
-});
+
 // Rotas
 app.get('/cad', function(req, res){
     res.render('formulario');

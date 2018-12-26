@@ -17,7 +17,10 @@ app.get('/cad', function(req, res){
 })
 
 app.get('/', function(req, res) {
-    res.render('home')
+    Post.all({order: [['id', 'DESC']]}).then(function(posts){
+        console.log(posts)
+        res.render('home', {posts: posts})
+    })
 })
 
 app.get('/css/main.css', function(req, res){

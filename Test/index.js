@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const Post = require('./models/Post')
 // Config
     // Template Engine
 app.engine('handlebars', handlebars({defaultLayout: 'main'}))
@@ -15,8 +16,23 @@ app.get('/cad', function(req, res){
     res.render('formulario');
 })
 
+app.get('/', function(req, res) {
+    res.render('home')
+})
+
+app.get('/css/main.css', function(req, res){
+    res.sendFile(__dirname + "/views/layouts/css/main.css");
+})
+
 app.post('/add', function(req, res){
-    res.send('Título:' + req.body.titulo + "; Conteúdo: " + req.body.conteudo);
+    Post.create({
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo
+    }).then(function() {
+        res.redirect('/')
+    }).catch(function(erro) {
+        res.send("Falha ao cirar Post. Erro: " + erro)
+    })
 })
 
 
